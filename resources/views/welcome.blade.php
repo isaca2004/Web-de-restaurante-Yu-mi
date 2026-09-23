@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Restaurante Yu-mi</title>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     @vite(['resources/css/yumi.css', 'resources/js/yumi.js'])
     
 </head>

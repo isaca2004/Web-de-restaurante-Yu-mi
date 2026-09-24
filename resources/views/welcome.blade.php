@@ -137,10 +137,10 @@
 
         <form id="resForm">
             <label for="rName">Nombre</label>
-            <input id="rName" name="Name" type="text" required>
+            <input id="rName" name="name" type="text" required>
 
             <label for="rPhone">Teléfono</label>
-            <input id="rPhone" name="Phone" type="tel" required>
+            <input id="rPhone" name="phone" type="tel" required>
 
             <label for="rDate">Fecha</label>
             <input id="rDate" name="date" type="date" required>

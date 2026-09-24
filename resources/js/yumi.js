@@ -67,9 +67,41 @@ menuTabs.addEventListener('click', function (evento){
 const resForm = document.getElementById('resForm');
 const resStatus = document.getElementById('resStatus');
 
-resForm.addEventListener('submit', function (evento){
+resForm.addEventListener('submit', async function (evento){
     //Evita que el formulario recargue la página 
     evento.preventDefault();
 
     resStatus.textContent = 'Enviando...';
-})
+
+    //FormData recoge automaticamente todos los campos del formulario
+    //Usando sus atributos "name"
+    const datos = new FormData(resForm);
+
+    //Laravel exige ese token en cada peticion que modifica datos (POST, PUT, DELETE),
+    //como proteccion contra atques. Se lee del <meta> que añadí en el <head>
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+
+    try{
+        const respuesta = await fetch('/reservas', {
+            method:'POST',
+            headers:{
+                'X-CSRF-TOKEN':token,
+                'Accept': 'application/json'
+            },
+            body:datos
+        });
+
+        if(respuesta.ok){
+            resStatus.textContent='¡Reserva enviada! Te confirmaremos por teléfono en breve.';
+            resForm.reset();
+        }else{
+            //Si laravel rechazó los datos (por ejemplo un campo mal rellenado),
+            //devuelve error 422 con el detalle del fallo.
+            const error = await respuesta.json();
+            console.error(error);
+            resStatus.textContent='Revisa los datos del formulario e inténtalo otra vez';
+        }
+    }catch (e){
+        resStatus.textContent= 'No se ha podido enviar. Llámanos al 966 20 38 46';
+    }
+});

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reserva;
 use Illuminate\Http\Request;
+use App\Mail\NuevaReserva;
+use Illuminate\Support\Facades\Mail;
 
 class ReservaController extends Controller
 {
@@ -38,9 +40,13 @@ class ReservaController extends Controller
         ]);
 
         //Crea la reserva en la base de datos con los datos ya validados
-        Reserva::create($datos);
+        $reserva = Reserva::create($datos);
 
-        //Responde en JSON ya que se va a leer desde JS
+        // Envía el email al restaurante con los datos de esta reserva.
+    // 'reservas@yu-mi.es' es provisional — cuando tengáis el email
+    // real del restaurante, se cambia solo aquí.
+        Mail::to('reservas@yu-mi.es')->send(new NuevaReserva($reserva));
+    
         return response()->json(['ok'=>true]);
     }
 }

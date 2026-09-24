@@ -48,24 +48,31 @@
         </div>
     </header>
 
+    {{--Galeria del restaurante--}}
+    <div class="photo-strip">
+        <img src="{{asset('images/Restaurante.png')}}" alt="Interior del restaurante Yu-mi">
+        <img src="{{asset('images/Restaurante1.png')}}" alt="Ambiente del restaurante Yu-mi">
+        <img src="{{asset('images/Restaurante2.png')}}" alt="Zona de mesas Yu-mi">
+    </div>
+
     {{--Para quien es la mesa--}}
     <section id="para-quien">
-        <h2>Un plan que le gusta a cualquiera</h2>
+        <h2 class="reveal">Un plan que le gusta a cualquiera</h2>
 
         <div class="who-grid">
-            <div class="who-card">
+            <div class="who-card reveal">
                 <h3>Familias</h3>
                 <p>Espacio y variedad para que cada uno elija lo suyo.</p>
             </div>
-            <div class="who-card">
+            <div class="who-card reveal">
                 <h3>Grupos de amigos</h3>
                 <p>Mesas amplias y buffet libre para todos.</p>
             </div>
-            <div class="who-card">
+            <div class="who-card reveal">
                 <h3>Celebraciones</h3>
                 <p>Cumpleaños o quedadas especiales, avísanos.</p>
             </div>
-            <div class="who-card">
+            <div class="who-card reveal">
                 <h3>Comidas de empresa</h3>
                 <p>Rápido, variado y con precio cerrado.</p>
             </div>
@@ -74,7 +81,7 @@
 
     {{--precios--}}
     <section id="precios">
-        <div class="buffet-banner">
+        <div class="buffet-banner reveal">
             <span class="tag">Menú Buffet</span>
             <h3>Libre acceso a todas las estaciones</h3>
             <div class="buffet-hours">
@@ -84,21 +91,21 @@
         </div>
 
         <div class="price-grid">
-            <div class="price-card">
+            <div class="price-card reveal">
                 <div class="price-badge">Mediodía Lun-Vie</div>
                 <div class="price-row"><span>Adultos</span><strong>20,95€</strong></div>
                 <div class="price-row"><span>Niños 80-130 cm</span><strong>12,95€</strong></div>
                 <div class="price-row"><span>Menores de 80 cm</span><strong>Gratis</strong></div>
             </div>
 
-            <div class="price-card">
+            <div class="price-card reveal">
                 <div class="price-badge">Noche Lun-Jue</div>
                 <div class="price-row"><span>Adultos</span><strong>22,95€</strong></div>
                 <div class="price-row"><span>Niños 80-130 cm</span><strong>13,95€</strong></div>
                 <div class="price-row"><span>Menores de 80 cm</span><strong>Gratis</strong></div>
             </div>
 
-            <div class="price-card featured">
+            <div class="price-card featured reveal">
                 <div class="price-badge">Noche Vie, festivos y fin de semana</div>
                 <div class="price-row"><span>Adultos</span><strong>25,95€</strong></div>
                 <div class="price-row"><span>Niños 80-130 cm</span><strong>25,95 €</strong></div>
@@ -107,9 +114,40 @@
         </div>
     </section>
 
+    {{--Como funciona el restaurante--}}
+    <section id="como-funciona">
+        <h2 class="reveal">¿Cómo funciona el buffet?</h2>
+        <p class="reveal">Nada de levantarse a servirse: en Yu-mi pides desde una tablet en tu propia mesa.</p>
+
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <span class="step-number">1</span>
+                <h3>Pide desde la tablet</h3>
+                <p>Cada mesa tiene la suya. Elige entre varios platos por ronda.</p>
+            </div>
+            <div class="step-card reveal">
+                <span class="step-number">2</span>
+                <h3>Llega recién hecho</h3>
+                <p>Cada plato se prepara al momento, no espera en una barra.</p>
+            </div>
+
+            <div class="step-card reveal">
+                <span class="step-number">3</span>
+                <h3>Pide otra ronda</h3>
+                <p>Repite tantas veces como quieras, sin límite de platos.</p>
+            </div>
+        </div>
+    </section>
+
     {{--carta--}}
     <section id="carta">
-        <h2>La carta</h2>
+        <h2 class="reveal">La carta</h2>
+
+        <div class="photo-strip reveal">
+            <img src="{{asset('images/buffet.png')}}" alt="Estacion del buffet de Yu-mi">
+            <img src="{{asset('images/buffet1.png')}}" alt="Variedad de platos de Yu-mi">
+            <img src="{{asset('images/postre.png')}}" alt="Postres de Yu-mi">
+        </div>
 
         <div class="menu-tabs" id="menuTabs">
             <button class="menu-tab active" data-cat="todos">Todos</button>
@@ -125,17 +163,53 @@
         </div>
     </section>
 
+    {{--Preguntas frecuentes--}}
+    <section id="faq">
+        <h2 class="reveal">Antes de venir</h2>
+
+        <div class="faq-list">
+            <details class="faq-item reveal">
+                <summary>¿Hay parking?</summary>
+                <p>Sí, disponemos de parking propio, aunque es limitado.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>¿Puedo pedir comida para llevar?</summary>
+                <p>Sí, ofrecemos servicio de comida para llevar además del buffet.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>¿El local es accesible?</summary>
+                <p>Sí, el restaurante es accesible para personas con movilidad reducida.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>¿Cuántos platos puedo pedir por ronda?</summary>
+                <p>Puedes pedir varios platos en cada ronda desde tu tablet. Tras unos minutos, puedes hacer otra ronda - sin límite de rondas.</p>
+            </details>
+
+            <details class="faq-item reveal">
+                <summary>¿Necesito reservar?</summary>
+                <p>Te lo recomendamos, especialmente en fin de semana: el local se llena con frecuencia y así te garantizas mesa.</p>
+            </details>
+        </div>
+    </section>
+
     {{--Reservas--}}
     <section id="reservas">
-        <h2>Guárdanos un hueco</h2>
+        <h2 class="reveal">Guárdanos un hueco</h2>
 
-        <div class="res-info">
+        <div class="urgency-note">
+            ⚡ Se llena rápido, sobre todo los fines de semana — te recomendamos reservar con antelación.
+        </div>
+
+        <div class="res-info reveal">
             <div>Comidas 13:00-16:00 · Cenas 19:00-23:30</div>
             <div>Teléfono: 966 20 38 46</div>
             <a href="#precios">Ver tarifas por turno</a>
         </div>
 
-        <form id="resForm">
+        <form id="resForm" class="reveal">
             <label for="rName">Nombre</label>
             <input id="rName" name="name" type="text" required>
 
@@ -170,10 +244,10 @@
 
     {{--sobre nosotros--}}
     <section id="nosotros">
-        <h2>Cocina abierta, mesa compartida</h2>
-        <p>Yu-mi nació para traer a Alicante el buffet asiático libre: nigiri, wok, dim sum y tempura conviviendo en un mismo espacio.</p>
+        <h2 class="reveal">Cocina abierta, mesa compartida</h2>
+        <p class="reveal">Yu-mi trae a Alicante un buffet libre distinto: cada mesa pide desde su propia tablet, en rondas de varios platos servidos al momento, para que todo llegue recién hecho. Sushi, wok, dim sum y tempura conviven en una carta amplia, con nigiris de salmón con trufa y de foie entre los favoritos de la casa.</p>
 
-        <div class="about-stats">
+        <div class="about-stats reveal">
             <div><strong>4,3</strong><span>valoración media</span></div>
             <div><strong>413</strong><span>reseñas en Google</span></div>
             <div><strong>2</strong><span>turnos al día</span></div>
@@ -182,16 +256,16 @@
 
     {{--contacto--}}
     <section id="contacto">
-        <h2>Te esperamos</h2>
+        <h2 class="reveal">Te esperamos</h2>
 
-        <div class="contact-card">
+        <div class="contact-card reveal">
             <div>Avinguda de Dénia, 197, 03559 Alacant, Alicante</div>
             <a href="tel: 966203846">966 20 38 46</a>
             <div>Comidas 13:00-16:30 · Cenas 19:00-23:30</div>
             <a href="mailto:reservas@yu-mi.es">reservas@yu-mi.es</a>
         </div>
 
-        <div class="map-frame">
+        <div class="map-frame reveal">
             <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.google.com/maps?q=Avinguda+de+Denia+197+03559+Alicante&output=embed">
             </iframe>

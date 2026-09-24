@@ -37,6 +37,36 @@
             margin: 0 auto;
         }
 
+        /*Animacion de aparicion al hacer scroll*/
+        /*Estado inicial: invisible ligeramente desplazado hacia abajo*/
+        .reveal{
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Cuando el JavaScript añada esta clase, el elemento aparece en su sitio */
+        .reveal.visible{
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Retraso escalonado: cada tarjeta dentro de una rejilla espera un poco
+   más que la anterior antes de empezar su animación */
+    .who-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .who-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .who-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .who-grid .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+    .price-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .price-grid .reveal:nth-child(2) { transition-delay: 0.15s; }
+    .price-grid .reveal:nth-child(3) { transition-delay: 0.3s; }
+
+    .menu-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .menu-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+    .menu-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+.menu-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+
         /*Navegación*/
         .site-nav{
             position: sticky;
@@ -57,7 +87,7 @@
 
         .nav-mark{
             font-size: 1.4rem;
-            font-weight: 800;
+            font-weight: 700;
             color: var(--coral);
             text-decoration: none; 
         }
@@ -81,7 +111,7 @@
             padding: 10px 20px;
             border-radius: 100px;
             text-decoration: none;
-            font-weight: 800;  
+            font-weight: 700;  
         }
 
         .nav-toggle{
@@ -98,7 +128,7 @@
             display: inline-block;
             padding: 14px 28px;
             border-radius: 100px;
-            font-weight: 800;
+            font-weight: 700;
             text-decoration: none;
             cursor: pointer;
             border: none;
@@ -107,6 +137,13 @@
         .btn-primary{
             background: var(--coral);
             color: #fff;
+            box-shadow: 0 2px 8px rgba(232, 69, 44, 0.25);
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover{
+            box-shadow: 0 4px 14px rgba(232, 69, 44, 0.35);
+            transform: translateY(-1px);
         }
 
         .btn-ghost{
@@ -120,13 +157,27 @@
             text-align: left;
         }
 
+        .photo-strip{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 30px 0;
+        }
+        .photo-strip img{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
         .pill-badge{
             display: inline-block;
             background: #FFF1DC;
             color: var(--coral);
             padding: 8px 16px;
             border-radius: 100px;
-            font-weight: 800;
+            font-weight: 700;
             font-size: 0.9rem;
             margin-bottom: 16px;  
         }
@@ -163,12 +214,10 @@
             gap: 16px;
             margin-top: 30px;
         }
-        .who-card{
-            background: #fff;
-            border: 2px solid var(--line);
-            border-radius: 18px;
-            padding: 24px;
-            text-align: center; 
+        .who-card, .price-card, .dish-card{
+            border-radius: 14px;           /* antes probablemente 18-22px */
+            border: 1px solid var(--line); /* borde más fino */
+            box-shadow: 0 1px 3px rgba(42, 32, 25, 0.06);
         }
 
         /*Precios*/
@@ -185,7 +234,7 @@
             padding: 4px 14px;
             border-radius: 100px;
             font-size: 0.85rem;
-            font-weight: 800;  
+            font-weight: 700;  
         }
         .buffet-hours{
             margin-top: 12px;
@@ -214,7 +263,7 @@
             padding: 5px 14px;
             border-radius: 100px;
             font-size: 0.8rem;
-            font-weight: 800;
+            font-weight: 700;
             margin-bottom: 14px;  
         }
         .price-row{
@@ -226,6 +275,75 @@
         }
         .price-row:first-of-type{
             border-top: none; 
+        }
+
+        /*pasos de pedir*/
+        .steps-grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .step-card{
+            background: var(--bg-panel, #fff);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .step-number{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--coral);
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /*Pregunta y respuestas*/
+        .faq-list{
+            display: flex;
+            flex-direction: column;
+            gap:12px;
+            margin-top: 24px;
+        }
+        .faq-item{
+            background: var(--bg-panel, #fff);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+
+        .faq-item summary{
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .faq-item summary::webkit-details-marker{
+            display: none;
+        }
+
+        .faq-item summary::after{
+            content: '+';
+            float: right;
+            font-weight: 400;
+            color: var(--coral);
+        }
+
+        .faq-item[open] summary::after{
+            content: '-';
+        }
+
+        .faq-item p{
+            margin-top: 12px;
+            color: var(--text-dim, #7a6e63);
         }
 
         /*Carta*/
@@ -240,7 +358,7 @@
             border: 2px solid var(--line);
             padding: 10px 18px;
             border-radius: 100px;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;  
         }
         .menu-tab.active{
@@ -318,4 +436,74 @@
             text-align: center;
             font-size: 0.9rem;
             color: var(--ink-dim); 
+        }
+
+        /*Responsive*/
+        @media (max-width: 768px){
+            /*Navegacion oculto el menú de enlace por defecto y solo muestro el menu hamburguesa*/
+            .nav-links{
+                display: none; /*Oculto hasta que se pulse el boton*/
+                position: absolute;
+                top: 100%;
+                left:0;
+                right:0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 20px 24px;
+                border-bottom: 2px solid var(--line);
+            }
+
+            /*Cuando el JS añade la clase open al pulsar el menu hamburguesa,
+            este selector con mas especifidad lo vuelve a mostrar*/
+            .nav-links.open{
+                display: flex;
+            }
+
+            .nav-toggle{
+                display: block; /*En escritorio estaba oculto*/
+            }
+
+            .nav-cta{
+                display: none; /*En movil no cabe bien junto al boton hamburguesa*/
+            }
+            .about-stats{
+                flex-wrap: wrap;
+                gap:16px;
+            }
+            /*Rejillas: las que tenian varias columnas pasan 1 sola*/
+            .who-grid{
+                grid-template-columns: 1fr;
+            }
+
+            .price-grid{
+                grid-template-columns: 1fr;
+            }
+            .menu-grid{
+                grid-template-columns: 1fr;
+            }
+
+            /*Los titulos mas grandes se reducen para que quepan*/
+            .hero h1{
+                font-size: 1.9rem;
+            }
+            
+            section, header, footer{
+                padding: 90px 24px;
+            }
+
+            .map-frame{
+                aspect-ratio: 4/3;
+            }
+
+            .photo-strip{
+                grid-template-columns: 1fr;
+            }
+            .photo-strip img{
+                height: 180px;
+            }
+
+            .steps-grid{
+                grid-template-columns: 1fr;
+            }
+
         }

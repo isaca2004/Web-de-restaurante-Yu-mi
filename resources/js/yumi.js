@@ -20,6 +20,25 @@ const platos = [
 //Pintar los platos en el HTML
 const menuGrid = document.getElementById('menuGrid');
 
+//Animacion de aparicion al hacer scroll
+// IntersectionObserver es una API del navegador que "vigila" elementos
+// y nos avisa cuando entran o salen de la pantalla, sin que tengamos
+// que calcular posiciones ni escuchar el evento "scroll" a mano.
+const observer= new IntersectionObserver(function(entradas){
+    entradas.forEach(function(entrada){
+        if(entrada.isIntersecting){
+            //El elemento ha entrado en la pantalla: le añado la clase 
+            entrada.target.classList.add('visible');
+
+            //Dejo de vigilarlo una vez que ha aparecido no hace falta
+            //seguir comprobandolo
+            observer.unobserve(entrada.target);
+        }
+    });
+}, {
+    threshold: 0.15 //Se activa cuando el 15% del elemento es visible
+});
+
 function renderPlatos(categoria){
     //Vacio lo que hubiera antes de volver a pintar
     menuGrid.innerHTML='';
@@ -32,7 +51,7 @@ function renderPlatos(categoria){
     //forEach recorre cada plato filtrado y crea su tarjeta HTML
     platosFiltrados.forEach(function (plato){
         const tarjeta = document.createElement('div');
-        tarjeta.className = 'dish-card';
+        tarjeta.className = 'dish-card reveal';
         tarjeta.innerHTML = `
             <div class="dish-top">
                 <span>${plato.name}</span>
@@ -40,6 +59,8 @@ function renderPlatos(categoria){
             <p>${plato.desc}</p>
         `;
         menuGrid.appendChild(tarjeta);
+
+        observer.observe(tarjeta);
     });
 }
 
@@ -104,4 +125,9 @@ resForm.addEventListener('submit', async function (evento){
     }catch (e){
         resStatus.textContent= 'No se ha podido enviar. Llámanos al 966 20 38 46';
     }
+});
+
+//Busco todos los elementos marcados con la clase "reveal" y le digo al observer que los vigile todos
+document.querySelectorAll('.reveal').forEach(function (el){
+    observer.observe(el);
 });
